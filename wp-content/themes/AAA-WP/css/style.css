@@ -1128,6 +1128,9 @@ footer {
       -ms-user-select: none;
           user-select: none;
 }
+.social-item a{
+  color: #fff;
+}
 
 .news-wrapper {
   display: -webkit-box;

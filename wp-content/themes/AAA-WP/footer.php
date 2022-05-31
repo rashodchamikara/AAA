@@ -7,74 +7,54 @@
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package WordPress
- * @subpackage Twenty_Twenty_One
- * @since Twenty Twenty-One 1.0
+ * @subpackage AAA-WP
+ * @since AAA-WP
  */
 
 ?>
-			</main><!-- #main -->
-		</div><!-- #primary -->
-	</div><!-- #content -->
 
-	<?php get_template_part( 'template-parts/footer/footer-widgets' ); ?>
-
-	<footer id="colophon" class="site-footer">
-
-		<?php if ( has_nav_menu( 'footer' ) ) : ?>
-			<nav aria-label="<?php esc_attr_e( 'Secondary menu', 'twentytwentyone' ); ?>" class="footer-navigation">
-				<ul class="footer-navigation-wrapper">
-					<?php
-					wp_nav_menu(
-						array(
-							'theme_location' => 'footer',
-							'items_wrap'     => '%3$s',
-							'container'      => false,
-							'depth'          => 1,
-							'link_before'    => '<span>',
-							'link_after'     => '</span>',
-							'fallback_cb'    => false,
-						)
-					);
-					?>
-				</ul><!-- .footer-navigation-wrapper -->
-			</nav><!-- .footer-navigation -->
-		<?php endif; ?>
-		<div class="site-info">
-			<div class="site-name">
-				<?php if ( has_custom_logo() ) : ?>
-					<div class="site-logo"><?php the_custom_logo(); ?></div>
-				<?php else : ?>
-					<?php if ( get_bloginfo( 'name' ) && get_theme_mod( 'display_title_and_tagline', true ) ) : ?>
-						<?php if ( is_front_page() && ! is_paged() ) : ?>
-							<?php bloginfo( 'name' ); ?>
-						<?php else : ?>
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
-						<?php endif; ?>
-					<?php endif; ?>
-				<?php endif; ?>
-			</div><!-- .site-name -->
-
-			<?php
-			if ( function_exists( 'the_privacy_policy_link' ) ) {
-				the_privacy_policy_link( '<div class="privacy-policy">', '</div>' );
-			}
-			?>
-
-			<div class="powered-by">
-				<?php
-				printf(
-					/* translators: %s: WordPress. */
-					esc_html__( 'Proudly powered by %s.', 'twentytwentyone' ),
-					'<a href="' . esc_url( __( 'https://wordpress.org/', 'twentytwentyone' ) ) . '">WordPress</a>'
-				);
-				?>
-			</div><!-- .powered-by -->
-
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-
-</div><!-- #page -->
-
+<footer>
+	<div class="footer-section">
+		<div class="footer-section__one">
+			<div class="footer-logo">
+				<img src="<?PHP echo get_field('site_footer_logo',27);?>" alt="" />
+			</div>
+			<div class="footer-des">
+				<?PHP echo get_field('footer_text',27);?>
+			</div>
+			<div class="footer-social">
+				<?PHP if(get_field('facebook_link',83)!=""){?>
+				<div class="social-item"><a href="<?PHP echo get_field('facebook_link',83);?>" target="_blank"><i class="fa fa-facebook fa-1x"></i></a></div>
+				<?PHP }?>
+				<?PHP if(get_field('instagram_link_',83)!=""){?>
+				<div class="social-item"><a href="<?PHP echo get_field('instagram_link_',83);?>" target="_blank"><i class="fa fa-instagram fa-1x"></i></a></div>
+				<?PHP }?>
+				<?PHP if(get_field('whatsapp_link',83)!=""){?>
+				<div class="social-item"><a href="<?PHP echo get_field('whatsapp_link',83);?>" target="_blank"><i class="fa fa-whatsapp fa-1x"></i></a></div>
+				<?PHP }?>
+				<?PHP if(get_field('twitter_link',83)!=""){?>
+				<div class="social-item"><a href="<?PHP echo get_field('twitter_link',83);?>" target="_blank"><i class="fa fa-twitter fa-1x"></i></a></div>
+				<?PHP }?>
+			</div>
+		</div>
+		<div class="footer-section__two">
+			<div class="footer-section__title">Contact us</div>
+			<div class="footer-contact-details">
+				<div class="footer-contact__item">
+					<span><i class="fa fa-map-marker" aria-hidden="true" style="font-size: 20px; color: black"></i>320/3 lorem,ipsum</span>
+				</div>
+				<div class="footer-contact__item">
+					<span><i class="fa fa-phone" aria-hidden="true" style="font-size: 20px; color: black"></i>+94113652235</span>
+				</div>
+				<div class="footer-contact__item">
+					<span><i class="fa fa-envelope" aria-hidden="true" style="font-size: 18px; color: black"></i>hello@gmail.com</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer-credits">Copyright <?PHP echo date('Y');?> | <?PHP echo get_bloginfo();?> All rights reserved  
+		| Solution By  <a href="https://www.tetris.lk" style="color: #2ca1d5 !important; font-weight: 600; margin-left:5px;" target="_blank">TETRIS</a> </div>
+</footer>
 <?php wp_footer(); ?>
 
 </body>
