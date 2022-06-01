@@ -117,78 +117,45 @@ get_header();
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div> -->
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="news-cards">
-                        <div class="news-cards__wrapper">
-                            <div class="news-card">
-                                <img src="<?php echo get_template_directory_uri();?>/home-about.png" alt="" />
-                                <div class="news-title">Lorem ipsum</div>
-                                <div class="news-content">
-                                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is
-                                    that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,
-                                </div>
-                                <div class="read-more"><a href="">Read more</a></div>
+                <?PHP 
+                    $category = get_queried_object();
+					$allCourses = new WP_Query(array(
+						'posts_per_page' => 10,
+						'cat' => 5
+					  ));
+                      $x=1;
+                      $start = true;
+                      while($allCourses->have_posts()){
+					  $allCourses->the_post(); 	
+                 if($x==1){
+                    ?>
+                    <div class="carousel-item <?PHP if($start==true){ echo "active"; }?>">
+                        <div class="news-cards">
+                            <div class="news-cards__wrapper">
+                    <?PHP
+                } ?>
+                                <div class="news-card">
+                                    <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(),'post-thumbnail')); ?>" alt="" />
+                                    <div class="news-title"><?PHP the_title();?></div>
+                                    <div class="news-content">
+                                        <?PHP echo get_the_excerpt();?>
+                                    </div>
+                                    <div class="read-more"><a href="<?php the_permalink(); ?>">Read more</a></div>
                             </div>
-                            <div class="news-card">
-                                <img src="<?php echo get_template_directory_uri();?>/home-about.png" alt="" />
-                                <div class="news-title">Lorem ipsum</div>
-                                <div class="news-content">
-                                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is
-                                    that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,
-                                </div>
-                                <div class="read-more"><a href="">Read more</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="news-cards">
-                        <div class="news-cards__wrapper">
-                            <div class="news-card">
-                                <img src="<?php echo get_template_directory_uri();?>/home-about.png" alt="" />
-                                <div class="news-title">Lorem ipsum</div>
-                                <div class="news-content">
-                                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is
-                                    that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,
-                                </div>
-                                <div class="read-more"><a href="">Read more</a></div>
-                            </div>
-                            <div class="news-card">
-                                <img src="<?php get_template_directory_uri();?>/home-about.png" alt="" />
-                                <div class="news-title">Lorem ipsum</div>
-                                <div class="news-content">
-                                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is
-                                    that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,
-                                </div>
-                                <div class="read-more"><a href="">Read more</a></div>
+                    
+                <?PHP if($x==2){
+                    ?>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="news-cards">
-                        <div class="news-cards__wrapper">
-                            <div class="news-card">
-                                <img src="<?php echo get_template_directory_uri();?>/home-about.png" alt="" />
-                                <div class="news-title">Lorem ipsum</div>
-                                <div class="news-content">
-                                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is
-                                    that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,
-                                </div>
-                                <div class="read-more"><a href="">Read more</a></div>
-                            </div>
-                            <div class="news-card">
-                                <img src="<?php  echo get_template_directory_uri();?>/home-about.png" alt="" />
-                                <div class="news-title">Lorem ipsum</div>
-                                <div class="news-content">
-                                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is
-                                    that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,
-                                </div>
-                                <div class="read-more"><a href="">Read more</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <?PHP
+                    $start = false;
+                    $x=1;
+                }else{
+                    $x++;
+                }
+                
+            }?>
             </div>
         </div>
     </div>
