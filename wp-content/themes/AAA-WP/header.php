@@ -20,7 +20,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <title><?PHP echo get_the_title();?></title>
+  <title><?PHP 
+	if(is_archive()){
+		echo get_the_archive_title();
+	}else{
+		echo get_the_title();
+	}
+  ?></title>
   <link rel="icon" type="image/png" href="<?PHP echo get_site_icon_url();?>" />
 	<?php wp_head(); ?>
   

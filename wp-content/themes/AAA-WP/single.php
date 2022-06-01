@@ -10,41 +10,48 @@
  */
 
 get_header();
-
-/* Start the Loop */
-while ( have_posts() ) :
-	the_post();
-
-	get_template_part( 'template-parts/content/content-single' );
-
-	if ( is_attachment() ) {
-		// Parent post navigation.
-		the_post_navigation(
-			array(
-				/* translators: %s: Parent post link. */
-				'prev_text' => sprintf( __( '<span class="meta-nav">Published in</span><span class="post-title">%s</span>', 'twentytwentyone' ), '%title' ),
-			)
-		);
-	}
-
-	// If comments are open or there is at least one comment, load up the comment template.
-	if ( comments_open() || get_comments_number() ) {
-		comments_template();
-	}
-
-	// Previous/next post navigation.
-	$twentytwentyone_next = is_rtl() ? twenty_twenty_one_get_icon_svg( 'ui', 'arrow_left' ) : twenty_twenty_one_get_icon_svg( 'ui', 'arrow_right' );
-	$twentytwentyone_prev = is_rtl() ? twenty_twenty_one_get_icon_svg( 'ui', 'arrow_right' ) : twenty_twenty_one_get_icon_svg( 'ui', 'arrow_left' );
-
-	$twentytwentyone_next_label     = esc_html__( 'Next post', 'twentytwentyone' );
-	$twentytwentyone_previous_label = esc_html__( 'Previous post', 'twentytwentyone' );
-
-	the_post_navigation(
-		array(
-			'next_text' => '<p class="meta-nav">' . $twentytwentyone_next_label . $twentytwentyone_next . '</p><p class="post-title">%title</p>',
-			'prev_text' => '<p class="meta-nav">' . $twentytwentyone_prev . $twentytwentyone_previous_label . '</p><p class="post-title">%title</p>',
-		)
-	);
-endwhile; // End of the loop.
-
+?>
+<div class="hero-image">
+	<img src="<?PHP echo get_template_directory_uri();?>/images/news-event.png" alt="">
+	<div class="hero-title">
+		<?PHP 
+		$cat_info = get_the_category();
+		echo $cat_info[0]->name;?>
+	</div>
+</div>
+<div class="section-single-news">
+	<div class="news-wrapper-single">
+		<div class="news-content-single">
+			<h3 class="news-title"><?PHP the_title();?></h3>
+			<div class="news-meta">
+				<div class="author">By <?PHP echo get_the_author();?></div>
+				<div class="date"><?php echo get_the_date(); ?></div>
+			</div>
+			<img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(),'full')); ?>" alt="" />
+			<?PHP the_content();?>
+		</div>
+		<div class="tags-single-news">
+			<div class="popular-content">
+				<?PHP 
+				$category = get_queried_object();
+				$allCourses = new WP_Query(array(
+					'posts_per_page' => 10,
+					'cat' => $cat_info[0]->term_id
+					));
+					while($allCourses->have_posts()){
+						$allCourses->the_post(); 	
+				?>
+				<div class="popular-content__item">
+					<img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(),'post-thumbnail')); ?>" alt="" />
+					<div class="popular-content__item-des">
+						<h4><a href="<?php the_permalink(); ?>"><?PHP the_title();?></a></h4>
+						<span><?php echo get_the_date(); ?></span>
+					</div>
+				</div>
+				<?PHP }?>
+			</div>
+		</div>
+	</div>
+</div>
+<?PHP
 get_footer();
