@@ -33,31 +33,41 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light custom-width">
-			<div class="container-fluid">
-				<div class="logo"><img src="<?PHP echo get_field('site_logo',27);?>" alt="American Alumni Society Logo" /></div>
-				<button
-					class="navbar-toggler"
-					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#navbarNavAltMarkup"
-					aria-controls="navbarNavAltMarkup"
-					aria-expanded="false"
-					aria-label="Toggle navigation"
-				>
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-					<div class="navbar-nav">
-						<a class="nav-link active" aria-current="page" href="/">Home</a>
-						<div class="line-seperator"></div>
-						<a class="nav-link" href="/about.html">About us</a>
-						<div class="line-seperator"></div>
-						<a class="nav-link" href="/news.html">News & Events</a>
-						<div class="line-seperator"></div>
-						<a class="nav-link" href="/join-us.html">Join</a>
-						<div class="line-seperator"></div>
-						<a class="nav-link" href="/contact.html">Contact us</a>
+	<div class="container-fluid">
+		<div class="logo"><img src="<?PHP echo get_field('site_logo',27);?>" alt="American Alumni Society Logo" / /></div>
+		<button
+			class="navbar-toggler"
+			type="button"
+			data-bs-toggle="collapse"
+			data-bs-target="#navbarNavAltMarkup"
+			aria-controls="navbarNavAltMarkup"
+			aria-expanded="false"
+			aria-label="Toggle navigation"
+		>
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+				<a class="nav-link" aria-current="page" href="/">Home</a>
+				<div class="line-seperator"></div>
+				<div class="dropdown">
+					<button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+						About us
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+						<li><a class="dropdown-item" href="/about.html">About</a></li>
+						<li><a class="dropdown-item" href="#">Another action</a></li>
+						<li><a class="dropdown-item" href="#">Something else here</a></li>
+					</ul>
 					</div>
-				</div>
+
+				<div class="line-seperator"></div>
+				<a class="nav-link active" href="/news.html">News & Events</a>
+				<div class="line-seperator"></div>
+				<a class="nav-link" href="/join-us.html">Join</a>
+				<div class="line-seperator"></div>
+				<a class="nav-link" href="/contact.html">Contact us</a>
 			</div>
-		</nav>
+		</div>
+	</div>
+</nav>
