@@ -1618,3 +1618,29 @@ a.nav-link.active {
   }
 }
 /*# sourceMappingURL=style.css.map */
+section.team-page-block{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  width: 80%;
+  margin: auto;
+  background: #eae8e8;
+  box-shadow: 2px 2px 6px 0px rgb(0 0 0 / 30%);
+    border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.hightext{
+  color: #161515 !important;
+  font-weight: 500;
+}

@@ -12,7 +12,7 @@
 //asquare scripts enqueue 
 
 function enqueueAAAStyles(){
-	$version_style = '0.01';
+	$version_style = '0.02';
 	wp_enqueue_style( 'bootstrap','https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css', null, $version_style );
 	wp_enqueue_style( 'google-fonts','https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,400&display=swap', null, $version_style );
 	wp_enqueue_style( 'font-awesome','https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', null, $version_style );
@@ -21,10 +21,10 @@ function enqueueAAAStyles(){
 add_action( 'wp_enqueue_scripts', 'enqueueAAAStyles' );
 
 function enqueueAAAScripts(){
-	$version_style = '0.01';
+	$version_style = '0.02';
 	wp_enqueue_script( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js', array(), $version_style,true );
 	wp_enqueue_script( 'popper-js', 'https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js', array(), $version_style,true );
-	wp_enqueue_script( 'bootstrap.min', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js', array(), $version_style,true );
+	wp_enqueue_script( 'bootstrap.min', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js', array(), $version_style);
 }
 add_action( 'wp_enqueue_scripts', 'enqueueAAAScripts' );
 
